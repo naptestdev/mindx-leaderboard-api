@@ -3,7 +3,7 @@ import { google } from "googleapis";
 
 dotenv.config();
 
-export const getSheet = async (name: string) => {
+export const getSheet = async () => {
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS!),
@@ -13,7 +13,7 @@ export const getSheet = async (name: string) => {
 
   const data = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SHEET_ID,
-    range: name,
+    range: "Rank",
   });
 
   return data.data.values;

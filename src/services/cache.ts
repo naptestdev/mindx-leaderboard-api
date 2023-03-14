@@ -19,8 +19,8 @@ const storage = {
 
 export const swr = createStaleWhileRevalidateCache({
   storage,
-  // 15 minutes
-  minTimeToStale: 900000,
+  // 5 minutes
+  minTimeToStale: 300000,
   serialize: JSON.stringify,
   deserialize: JSON.parse,
 });
