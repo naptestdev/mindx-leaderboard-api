@@ -59,6 +59,10 @@ app.get("/:course/:level/:lesson", async (req, res) => {
         name: item["Tên học sinh"],
         point: +item[lessonKey].replace(",", "."),
         class: item["Mã lớp"],
+        badges: new Array(7)
+          .fill("")
+          .map((_, index) => (+item[`Huy hiệu ${index + 1}`] ? index + 1 : 0))
+          .filter(Boolean),
       }));
 
     res.send(result);
